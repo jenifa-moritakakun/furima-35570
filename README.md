@@ -2,17 +2,16 @@
 
 ## usersテーブル
 
-| Column                 | Type   | Options     |
-| ---------------------- | ------ | ----------- |
-| nickname               | string | null: false |
-| email                  | string | nill: false |
-| password               | string | null: false |
-| encrypted_password     | string | null: false |
-| family_name            | string | null: false |
-| first_name             | string | null: false |
-| family_name_full_width | string | null: false |
-| first_name_full_width  | string | null: false |
-| birth_day              | string | null: false |
+| Column                 | Type   | Options                    |
+| ---------------------- | ------ | -------------------------- |
+| nickname               | string | null: false                |
+| email                  | string | nill: false, unique: false |
+| encrypted_password     | string | null: false                |
+| family_name            | string | null: false                |
+| first_name             | string | null: false                |
+| family_name_full_width | string | null: false                |
+| first_name_full_width  | string | null: false                |
+| birth_day              | date   | null: false                |
 
 ### Association
 
@@ -59,7 +58,7 @@
 | municipality     | string     | null: false       |
 | address          | string     | null: false       |
 | building_name    | string     |                   |
-| phone_number     | string     |                   |
+| phone_number     | string     | null: false       |
 | purchase         | references | foreign_key: true |
 
 ### Association
