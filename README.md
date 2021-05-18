@@ -53,7 +53,7 @@
 
 | Column           | Type       | Options           |
 | ---------------- | ---------- | ----------------- |
-| postal_code      | integer    | null: false       |
+| postal_code      | string     | null: false       |
 | shipping_area_id | integer    | null: false       |
 | municipality     | string     | null: false       |
 | address          | string     | null: false       |
