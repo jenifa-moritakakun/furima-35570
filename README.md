@@ -4,15 +4,15 @@
 
 | Column                 | Type   | Options      |
 | ---------------------- | ------ | ------------ |
-| nickname               | text   | null: false  |
-| email                  | text   | unique: true |
-| password               | text   | null: false  |
-| encrypted_password     | text   | null: false  |
-| family_name            | text   | null: false  |
-| first_name             | text   | null: false  |
-| family_name_full_width | text   | null: false  |
-| first_name_full_width  | text   | null: false  |
-| birth_day              | date   | null: false  |
+| nickname               | string | null: false  |
+| email                  | string | unique: true |
+| password               | string | null: false  |
+| encrypted_password     | string | null: false  |
+| family_name            | string | null: false  |
+| first_name             | string | null: false  |
+| family_name_full_width | string | null: false  |
+| first_name_full_width  | string | null: false  |
+| birth_day              | string | null: false  |
 
 ### Association
 
@@ -21,16 +21,16 @@
 
 ## itemsテーブル
 
-| Column              | Type   | Options     |
-| ------------------- | ------ | ----------- |
-| name                | string | null: false |
-| description         | text   | null: false |
-| details_category_id | string | null: false |
-| details_status_id   | string | null: false |
-| shipping_charges_id | string | null: false |
-| shipping_area_id    | string | null: false |
-| shipping_days_id    | string | null: false |
-| selling_price       | string | null: false |
+| Column              | Type    | Options     |
+| ------------------- | ------- | ----------- |
+| name                | string  | null: false |
+| description         | text    | null: false |
+| details_category_id | integer | null: false |
+| details_status_id   | integer | null: false |
+| shipping_charges_id | integer | null: false |
+| shipping_area_id    | integer | null: false |
+| shipping_days_id    | integer | null: false |
+| selling_price       | integer | null: false |
 
 ### Association
 
@@ -54,12 +54,12 @@
 
 | Column           | Type       | Options           |
 | ---------------- | ---------- | ----------------- |
-| postal_code      | string     | null: false       |
-| shipping_area_id | string     | null: false       |
+| postal_code      | integer    | null: false       |
+| shipping_area_id | integer    | null: false       |
 | municipality     | string     | null: false       |
 | address          | string     | null: false       |
 | building_name    | string     |                   |
-| phone_number     | integer    | unique: true      |
+| phone_number     | string     |                   |
 | purchases        | references | foreign_key: true |
 
 ### Association
