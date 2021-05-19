@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   validates :encrypted_password, format: { with: /[a-z\d]{6,}/ }
   with_options presence: true do
     validates :birth_day
