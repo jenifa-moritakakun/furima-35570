@@ -1,4 +1,4 @@
-class Details_category < ActiveHash::Base
+class DetailsCategory < ActiveHash::Base
     self.data = [
     { id: 1, name: '---' },
     { id: 2, name: 'レディース' },
@@ -14,5 +14,5 @@ class Details_category < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :articles
+  has_many :items
 end
