@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    name                { Faker::Name.name }
+    name                { '商品名' }
     description         { '商品の説明' }
     details_category_id { '3' }
     details_status_id   { '3' }
