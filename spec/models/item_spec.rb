@@ -31,10 +31,22 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Details category can't be blank")
       end
 
+      it 'カテゴリーのidが1だと出品できない' do
+        @item.details_category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Details category must be other than 1")
+      end
+
       it '商品の状態についての情報が空だと出品できない' do
         @item.details_status_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Details status can't be blank")
+      end
+
+      it '商品の状態についてのidが1だと出品できない' do
+        @item.details_status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Details status must be other than 1")
       end
 
       it '配送料の負担についての情報が空だと出品できない' do
@@ -43,16 +55,34 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping charges can't be blank")
       end
 
+      it '配送料の負担についてのidが1だと出品できない' do
+        @item.shipping_charges_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping charges must be other than 1")
+      end
+
       it '発送元の地域についての情報が空だと出品できない' do
         @item.shipping_area_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping area can't be blank")
       end
 
+      it '配送元の地域についてのidが1だと出品できない' do
+        @item.shipping_area_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping area must be other than 1")
+      end
+
       it '発送までの日数についての情報が空だと出品できない' do
         @item.shipping_days_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping days can't be blank")
+      end
+
+      it 'のidが1だと出品できない' do
+        @item.shipping_days_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping days must be other than 1")
       end
 
       it '販売価格についての情報が空だと出品できない' do
