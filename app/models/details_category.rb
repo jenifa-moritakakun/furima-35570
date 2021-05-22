@@ -1,5 +1,5 @@
 class DetailsCategory < ActiveHash::Base
-    self.data = [
+  self.data = [
     { id: 1, name: '---' },
     { id: 2, name: 'レディース' },
     { id: 3, name: 'メンズ' },

@@ -14,14 +14,13 @@ class Item < ApplicationRecord
     validates :name
     validates :description
     validates :selling_price, numericality: true
-    validates_inclusion_of :selling_price, in: 300..9999999
+    validates_inclusion_of :selling_price, in: 300..9_999_999
     with_options numericality: { other_than: 1 } do
-      validates :details_category_id  
-      validates :details_status_id  
-      validates :shipping_charges_id 
-      validates :shipping_area_id  
-      validates :shipping_days_id 
+      validates :details_category_id
+      validates :details_status_id
+      validates :shipping_charges_id
+      validates :shipping_area_id
+      validates :shipping_days_id
     end
   end
 end
-
