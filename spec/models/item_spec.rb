@@ -92,19 +92,37 @@ RSpec.describe Item, type: :model do
       end
 
       it '販売価格は299円以下では出品できない' do
-        @item.selling_price = '299'
+        @item.selling_price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Selling price is not included in the list')
       end
 
       it '販売価格は10000000円以上では出品できない' do
-        @item.selling_price = '10000000'
+        @item.selling_price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include('Selling price is not included in the list')
       end
 
-      it '販売価格は半角数字でないと保存できない' do
+      it '販売価格は全角数字では保存できない' do
         @item.selling_price = '３００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Selling price is not a number')
+      end
+
+      it '販売価格は全角文字では保存できない' do
+        @item.selling_price = '亞アあ'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Selling price is not a number')
+      end
+
+      it '販売価格は半角英数字混合では保存できない' do
+        @item.selling_price = 'a2345'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Selling price is not a number')
+      end
+
+      it '販売価格は半角英語では保存できない' do
+        @item.selling_price = 'aiueo'
         @item.valid?
         expect(@item.errors.full_messages).to include('Selling price is not a number')
       end
