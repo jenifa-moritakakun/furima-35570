@@ -5,6 +5,6 @@ FactoryBot.define do
     municipality        { '市区町村' }
     address             { '番地' }
     building_name       { '建物名' }
-    phone_number        { Faker::PhoneNumber(max_length: 11) }
+    phone_number        { '09012345678' }
   end
 end
