@@ -10,6 +10,7 @@ class OrderAddress
     validates :municipality
     validates :address
     validates :phone_number, format: {with: /[0-9]{,11}/ }
+    validates :token
   end
 
   def save

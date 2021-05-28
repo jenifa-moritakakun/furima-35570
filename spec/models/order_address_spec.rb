@@ -11,7 +11,7 @@ RSpec.describe Order, type: :model do
     end
 
     context '内容に問題がない場合' do
-      it '郵便番号、都道府県、市区町村、番地、電話番号があれば購入できる' do
+      it '郵便番号、都道府県、市区町村、番地、電話番号、カード情報があれば購入できる' do
         expect(@order).to be_valid
       end
     end
@@ -63,6 +63,12 @@ RSpec.describe Order, type: :model do
         @order.phone_number = 'a2345678901'
         @order.valid?
         expect(@order.errors.full_messages).to include()
+      end
+
+      it 'カード情報が空では登録できない' do
+        @order.token = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
