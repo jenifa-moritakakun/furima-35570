@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
   def destroy
     redirect_to root_path if @item.destroy
   end
+  end 
 
   private
 
@@ -52,4 +53,5 @@ class ItemsController < ApplicationController
   def contributor_confirmation
     redirect_to root_path unless current_user == @item.user
   end
-end
+  
+  
