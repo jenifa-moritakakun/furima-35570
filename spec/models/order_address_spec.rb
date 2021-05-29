@@ -6,8 +6,8 @@ RSpec.describe Order, type: :model do
       @user1 = FactoryBot.create(:user)
       @user2 = FactoryBot.create(:user)
       @item = FactoryBot.create(:item, user_id: @user1.id)
-      @order = FactoryBot.build(:order_address, item_id: @item.id, user_id: @user2.id )
-      sleep 0.1 
+      @order = FactoryBot.build(:order_address, item_id: @item.id, user_id: @user2.id)
+      sleep 0.1
     end
 
     context '内容に問題がない場合' do
@@ -26,7 +26,7 @@ RSpec.describe Order, type: :model do
       it '郵便番号にハイフンがないと購入できない' do
         @order.postal_code = '0123456'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@order.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
 
       it '都道府県が空だと購入できない' do
@@ -40,7 +40,7 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("Municipality can't be blank")
       end
-      
+
       it '番地が空だと購入できない' do
         @order.address = ''
         @order.valid?
@@ -50,19 +50,19 @@ RSpec.describe Order, type: :model do
       it '電話番号が空だと購入できない' do
         @order.phone_number = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include()
+        expect(@order.errors.full_messages).to include
       end
 
       it '電話番号が12桁だと購入できない' do
         @order.phone_number = '012345678901'
         @order.valid?
-        expect(@order.errors.full_messages).to include()
+        expect(@order.errors.full_messages).to include
       end
 
       it '電話番号が英字だと購入できない' do
         @order.phone_number = 'a2345678901'
         @order.valid?
-        expect(@order.errors.full_messages).to include()
+        expect(@order.errors.full_messages).to include
       end
 
       it 'カード情報が空では登録できない' do
