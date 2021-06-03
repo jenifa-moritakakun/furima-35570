@@ -14,6 +14,10 @@ class OrderAddress
     validates :token
   end
 
+  with_options numericality: { other_than: 1 } do
+    validates :shipping_area_id
+  end
+
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
     Address.create(postal_code: postal_code, shipping_area_id: shipping_area_id, municipality: municipality, address: address,

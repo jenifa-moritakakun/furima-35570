@@ -15,7 +15,7 @@ RSpec.describe Order, type: :model do
         expect(@order).to be_valid
       end
 
-      it '建物名がからでも購入できる' do
+      it '建物名が空でも購入できる' do
         expect(@order).to be_valid
       end
     end
@@ -37,6 +37,12 @@ RSpec.describe Order, type: :model do
         @order.shipping_area_id = ''
         @order.valid?
         expect(@order.errors.full_messages).to include("Shipping area can't be blank")
+      end
+
+      it '都道府県のidが1だと購入できない' do
+        @item.shipping_days_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping days can't be blank")
       end
 
       it '市区町村が空だと購入できない' do
@@ -69,19 +75,19 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include
       end
 
-      it 'カード情報が空では登録できない' do
+      it 'カード情報が空では購入できない' do
         @order.token = ''
         @order.valid?
         expect(@order.errors.full_messages).to include("Token can't be blank")
       end
 
-      it 'user_idが空だと登録できない' do
+      it 'user_idが空だと購入できない' do
         @order.user_id = ''
         @order.valid?
         expect(@order.errors.full_messages).to include("User can't be blank")
       end
 
-      it 'item_idが空だと登録できない' do
+      it 'item_idが空だと購入できない' do
         @order.item_id = ''
         @order.valid?
         expect(@order.errors.full_messages).to include("Item can't be blank")
